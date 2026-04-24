@@ -44,7 +44,6 @@ public class Warehouse : MonoBehaviour, IReceiver, ISender
     /// <summary>
     /// 存放产品的槽位
     /// </summary>
-    [SerializeField]
     private Product[,] slots;
 
     [SerializeField]
