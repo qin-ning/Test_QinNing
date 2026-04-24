@@ -17,7 +17,6 @@ public class Packsack : MonoBehaviour, IReceiver, ISender
     /// <summary>
     /// 已使用容量
     /// </summary>
-    [SerializeField]
     private int used;
 
     /// <summary>
