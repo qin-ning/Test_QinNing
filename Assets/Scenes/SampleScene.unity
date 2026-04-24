@@ -1374,7 +1374,7 @@ MonoBehaviour:
   warehouseType: 1
   productStores:
   - productTemplate: {fileID: 350108818804378220, guid: 1c86bf1a52a5caf41a97022b924f557d, type: 3}
-    capacity: 30
+    capacity: 50
   slotWith: 0.3
   slotHeight: 0.3
   columnCount: 10
@@ -4176,7 +4176,7 @@ MonoBehaviour:
   warehouseType: 1
   productStores:
   - productTemplate: {fileID: -4219742526113382906, guid: bcb619726216ab248b33d452c6f6d916, type: 3}
-    capacity: 30
+    capacity: 50
   slotWith: 0.3
   slotHeight: 0.3
   columnCount: 10
@@ -5586,7 +5586,7 @@ MonoBehaviour:
   warehouseType: 0
   productStores:
   - productTemplate: {fileID: -4219742526113382906, guid: bcb619726216ab248b33d452c6f6d916, type: 3}
-    capacity: 30
+    capacity: 50
   slotWith: 0.3
   slotHeight: 0.3
   columnCount: 10
@@ -5662,9 +5662,9 @@ MonoBehaviour:
   warehouseType: 0
   productStores:
   - productTemplate: {fileID: -4219742526113382906, guid: bcb619726216ab248b33d452c6f6d916, type: 3}
-    capacity: 20
+    capacity: 25
   - productTemplate: {fileID: 350108818804378220, guid: 1c86bf1a52a5caf41a97022b924f557d, type: 3}
-    capacity: 20
+    capacity: 25
   slotWith: 0.3
   slotHeight: 0.3
   columnCount: 10
