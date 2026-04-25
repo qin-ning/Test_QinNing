@@ -257,6 +257,22 @@ public class Producer : MonoBehaviour, ISender, IReceiver
             }
             receivTemp.Clear();
 
+            //重新检查输出端状态（避免产品输入动画过程，忽略了输出端发生改变）
+            outputReady = outputWarehouse.GetAvailCapacity(outputProductTemplate.productType) > 0;
+            while (!outputReady)
+            {
+                //通知UI
+                warningMark = 2;
+                EventCenter.onProducerWarning.Invoke(this, "输出仓库已存储空间已满");
+                yield return null;
+                outputReady = outputWarehouse.GetAvailCapacity(outputProductTemplate.productType) > 0;
+            }
+            //清除告警
+            if (warningMark != 0)
+                EventCenter.onProducerWarning.Invoke(this, null);
+            warningMark = 0;
+
+
             //生产
             Output();
 
