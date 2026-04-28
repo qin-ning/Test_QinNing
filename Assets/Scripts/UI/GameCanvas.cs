@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.IO;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class GameCanvas : MonoBehaviour
 {
@@ -18,18 +16,18 @@ public class GameCanvas : MonoBehaviour
     void Awake()
     {
         instance = this;
+        EventCenter.onPacksackChanged.AddListener(RefreshPacksackInfo);
+        EventCenter.onProducerWarning.AddListener(ProducerWarning);
     }
 
     private void Start()
     {
         producerWarningTextPrefab.gameObject.SetActive(false);
-        EventCenter.onPacksackChanged.AddListener(RefreshPacksackInfo);
-        EventCenter.onProducerWarning.AddListener(ProducerWarning);
     }
 
     private void RefreshPacksackInfo(int used, int capacity)
     {
-        packsackInfoText.text = $"±³°üÈÝÁ¿:{used}/{capacity}";
+        packsackInfoText.text = $"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½:{used}/{capacity}";
     }
 
     private void ProducerWarning(Producer producer, string warning)
@@ -40,7 +38,7 @@ public class GameCanvas : MonoBehaviour
             textMeshProUGUI = GameObject.Instantiate(producerWarningTextPrefab, producerWarningTextPrefab.transform.parent);
             producerToWarning.Add(producer, textMeshProUGUI);
         }
-        //Çå³ýÒÅÁô¸æ¾¯ÐÅÏ¢
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½æ¾¯ï¿½ï¿½Ï¢
         if (warning is null)
         {
             textMeshProUGUI.gameObject.SetActive(false);

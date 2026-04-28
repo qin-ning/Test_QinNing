@@ -191,7 +191,7 @@ public class Producer : MonoBehaviour, ISender, IReceiver
     IEnumerator ProducerConduct()
     {
         float timeCouter = 0;
-        uint warningMark = 0;
+
         while (true)
         {
             //输入端就绪状态
@@ -212,8 +212,9 @@ public class Producer : MonoBehaviour, ISender, IReceiver
             if (!inputReady)
             {
                 //通知UI
+                if (warningMark != 1)
+                    EventCenter.onProducerWarning.Invoke(this, "输入产品的库存达不到要求数量");
                 warningMark = 1;
-                EventCenter.onProducerWarning.Invoke(this, "输入产品的库存达不到要求数量");
                 yield return null;
                 continue;
             }
@@ -223,8 +224,9 @@ public class Producer : MonoBehaviour, ISender, IReceiver
             if (!outputReady)
             {
                 //通知UI
+                if (warningMark != 2)
+                    EventCenter.onProducerWarning.Invoke(this, "输出仓库已存储空间已满");
                 warningMark = 2;
-                EventCenter.onProducerWarning.Invoke(this, "输出仓库已存储空间已满");
                 yield return null;
                 continue;
             }
@@ -262,6 +264,8 @@ public class Producer : MonoBehaviour, ISender, IReceiver
             while (!outputReady)
             {
                 //通知UI
+                if (warningMark != 2)
+                    EventCenter.onProducerWarning.Invoke(this, "输出仓库已存储空间已满");
                 warningMark = 2;
                 EventCenter.onProducerWarning.Invoke(this, "输出仓库已存储空间已满");
                 yield return null;
@@ -271,7 +275,6 @@ public class Producer : MonoBehaviour, ISender, IReceiver
             if (warningMark != 0)
                 EventCenter.onProducerWarning.Invoke(this, null);
             warningMark = 0;
-
 
             //生产
             Output();
@@ -283,9 +286,9 @@ public class Producer : MonoBehaviour, ISender, IReceiver
             }
             timeCouter = 0;
         }
-
     }
     Dictionary<Product.ProductType, int> receivTemp = new Dictionary<Product.ProductType, int>();
+    UInt16 warningMark = 0;
 
     /// <summary>
     /// 控制产品发送动画的协程
