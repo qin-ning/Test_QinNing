@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using UnityEditor;
 using UnityEngine;
 
 public static class ObjectPool
@@ -8,7 +6,7 @@ public static class ObjectPool
     private static Dictionary<Product.ProductType, Stack<Product>> freeProduct = new Dictionary<Product.ProductType, Stack<Product>>();
 
     /// <summary>
-    /// »ñÈ¡ÊµÀý
+    /// ï¿½ï¿½È¡Êµï¿½ï¿½
     /// </summary>
     /// <param name="prefab"></param>
     /// <returns></returns>
@@ -27,7 +25,7 @@ public static class ObjectPool
     }
 
     /// <summary>
-    /// »ØÊÕÊµÀý
+    /// ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
     /// </summary>
     /// <param name="product"></param>
     public static void Recycle(Product product)
